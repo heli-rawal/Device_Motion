@@ -1,0 +1,77 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Riley</title>
+</head>
+<body>
+<canvas id="c" style="width:100%;height:100%"></canvas>
+<script>
+    var canvas = document.getElementById("c");
+
+
+    canvas.width= window.innerWidth;
+    canvas.height=window.innerHeight;
+    var ctx=canvas.getContext('2d');
+    var x=0;
+    var y =0;
+    var z=0;
+
+
+    ctx.shadowColor = 'black';
+    ctx.shadowOffsetX = 9;
+    ctx.shadowOffsetY = 9;
+    ctx.shadowBlur = 30;
+
+
+    window.addEventListener("devicemotion", handleMotionEvent, true);
+
+    function handleMotionEvent(event){
+        var x= event.accelerationIncludingGravity.x;
+        var y= event.accelerationIncludingGravity.y;
+        var z= event.accelerationIncludingGravity.z;
+
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+
+        moveLines(x,y,z);
+
+    }
+
+
+    moveLines(x,y,z);
+    function moveLines(x,y,z) {
+        ctx.clearRect(0,0,860,750);
+
+        {
+            for (let n = 0; n < canvas.width; n += 50) {
+                ctx.fillRect(n+x*2+y*2+z*2, (canvas.height / 10) +x*2+y*2+z*2, 5, canvas.height / 2 );
+                ctx.fillStyle = 'black';
+            }
+            for (let n = 0; n < canvas.width; n += 50) {
+                ctx.fillRect(n+x*3+y*3+z*3, (canvas.height / 8) +x*3+y*3+z*3, 10  , (canvas.height / 2)  );
+                ctx.fillStyle = 'black';
+            }
+            for (let n = 0; n < canvas.width; n += 50) {
+                ctx.fillRect(n+x*4+y*4+z*4, (canvas.height / 6) +x*4+y*4+z*4, 15 , (canvas.height / 2)  );
+                ctx.fillStyle = 'black';
+            }
+            for (let n = 0; n < canvas.width; n += 50) {
+                ctx.fillRect(n+x*2+y*2+z*2, (canvas.height / 4) +x*2+y*2+z*2, 20  , canvas.height);
+                ctx.fillStyle = 'black';
+            }
+            for (let n = 0; n < canvas.width; n += 50) {
+                ctx.fillRect(n+x*5+y*5+z*5, (canvas.height / 2) +x*2+y*2+z*2, 25  , canvas.height );
+                ctx.fillStyle = 'black';
+            }
+
+        }
+    }
+
+
+</script>
+</body>
+</html>
+
